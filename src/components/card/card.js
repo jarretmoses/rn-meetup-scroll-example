@@ -1,10 +1,15 @@
+// @flow
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import randomColor from 'randomcolor';
 
 import styles from './styles';
 
-export default class Card extends PureComponent {
+type Props = {
+  number: number
+}
+
+export default class Card extends PureComponent<Props> {
   render() {
     const cardStyles = [
       styles.container,
@@ -12,7 +17,9 @@ export default class Card extends PureComponent {
     ];
 
     return (
-      <View style={cardStyles} />
+      <View style={cardStyles}>
+        <Text>CARD {this.props.number}</Text>
+      </View>
     )
   }
 }
