@@ -5,16 +5,22 @@ import {
   StyleSheet
 } from 'react-native';
 
+import styles from './styles';
+
 export default class MainScreen extends Component {
   static navigationOptions = () => ({
     header: null,
-  });
+  })
+
+  _exampleOne = () => {
+    this.props.navigation.navigate('ExampleOne')
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Button
-          onPress={() => {}}
+          onPress={this._exampleOne}
           title='Example 1'
         />
         <Button
@@ -29,14 +35,3 @@ export default class MainScreen extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    width: 50,
-  }
-})
