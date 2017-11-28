@@ -1,11 +1,18 @@
+// @flow
 import React, { PureComponent } from 'react';
-import { ScrollView } from 'react-native';
+import { Animated, ScrollView } from 'react-native';
 
 import Card from '../../components/card/card';
 import data from '../../constants/data';
 import styles from './styles';
 
-class ExampleTwoScreen extends PureComponent {
+class ExampleThreeScreen extends PureComponent<{}> {
+  _animatedValue: Object
+
+  componentWillMount() {
+    this._animatedValue = new Animated.Value(0);
+  }
+
   _renderCards = () => (
     data.map((number) => <Card number={number} key={number} />)
   )
@@ -24,4 +31,4 @@ class ExampleTwoScreen extends PureComponent {
   }
 }
 
-export default ExampleTwoScreen;
+export default ExampleThreeScreen;
