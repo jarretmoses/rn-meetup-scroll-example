@@ -1,25 +1,34 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { Animated, View, Text } from 'react-native';
 import randomColor from 'randomcolor';
 
 import styles from './styles';
 
+const AnimatedView = Animated.createAnimatedComponent(View)
+
 type Props = {
-  number: number
+  number: number,
+  animatedStyles?: Object,
 }
 
 export default class Card extends PureComponent<Props> {
   render() {
+    const { animatedStyles, number } = this.props;
     const cardStyles = [
       styles.container,
-      { backgroundColor: randomColor() }
+      { backgroundColor: randomColor() },
+      animatedStyles
     ];
 
+    const Wrapper = animatedStyles
+      ? AnimatedView
+      : View;
+
     return (
-      <View style={cardStyles}>
-        <Text>CARD {this.props.number}</Text>
-      </View>
+      <Wrapper style={cardStyles}>
+        <Text>CARD {number}</Text>
+      </Wrapper>
     )
   }
 }

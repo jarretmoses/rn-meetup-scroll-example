@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import {
   Button,
@@ -7,13 +8,26 @@ import {
 
 import styles from './styles';
 
-export default class MainScreen extends Component {
+type Props = {
+  navigation: Object
+}
+
+export default class MainScreen extends Component<Props> {
+
+  _exampleOne: Function
+  _exampleTwo: Function
+
   static navigationOptions = () => ({
     header: null,
   })
 
-  _exampleOne = () => {
-    this.props.navigation.navigate('ExampleOne')
+  componentWillMount() {
+    this._exampleOne = this._navigate.bind(this, 'ExampleOne');
+    this._exampleTwo = this._navigate.bind(this, 'ExampleTwo');
+  }
+
+  _navigate = (route: string) => {
+    this.props.navigation.navigate(route)
   }
 
   render() {
@@ -24,7 +38,7 @@ export default class MainScreen extends Component {
           title='Example 1'
         />
         <Button
-          onPress={() => {}}
+          onPress={this._exampleTwo}
           title='Example 2'
         />
         <Button
