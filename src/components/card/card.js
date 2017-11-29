@@ -12,7 +12,7 @@ type Props = {
   animatedStyles?: Object,
 }
 
-export default class Card extends PureComponent<Props> {
+class Card extends PureComponent<Props> {
   render() {
     const { animatedStyles, number } = this.props;
     const cardStyles = [
@@ -32,3 +32,5 @@ export default class Card extends PureComponent<Props> {
     )
   }
 }
+
+export default Card;
