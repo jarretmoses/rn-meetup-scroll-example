@@ -24,7 +24,7 @@ const getParallax = (animatedScroll, i) => {
   });
 };
 
-class ExampleFourScreen extends PureComponent<{}> {
+class ExampleFiveScreen extends PureComponent<{}> {
   _animatedValue: Object
 
   _animatedValue = new Animated.Value(0);
@@ -66,4 +66,4 @@ class ExampleFourScreen extends PureComponent<{}> {
   }
 }
 
-export default ExampleFourScreen;
+export default ExampleFiveScreen;
