@@ -17,6 +17,7 @@ export default class MainScreen extends Component<Props> {
   _exampleOne: Function
   _exampleTwo: Function
   _exampleThree: Function
+  _exampleFour: Function
 
   static navigationOptions = () => ({
     header: null,
@@ -26,6 +27,7 @@ export default class MainScreen extends Component<Props> {
     this._exampleOne = this._navigate.bind(this, 'ExampleOne');
     this._exampleTwo = this._navigate.bind(this, 'ExampleTwo');
     this._exampleThree = this._navigate.bind(this, 'ExampleThree');
+    this._exampleFour = this._navigate.bind(this, 'ExampleFour');
   }
 
   _navigate = (route: string) => {
@@ -46,6 +48,10 @@ export default class MainScreen extends Component<Props> {
         <Button
           onPress={this._exampleThree}
           title='Example 3'
+        />
+        <Button
+          onPress={this._exampleFour}
+          title='Example 4'
         />
       </View>
     )

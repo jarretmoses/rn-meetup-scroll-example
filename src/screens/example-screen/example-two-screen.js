@@ -15,7 +15,6 @@ class ExampleTwoScreen extends PureComponent {
       <ScrollView
         style={styles.container}
         horizontal
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
       >
         {this._renderCards()}
