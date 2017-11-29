@@ -5,6 +5,7 @@ import ExampleOneScreen from '../screens/example-screen/example-one-screen';
 import ExampleTwoScreen from '../screens/example-screen/example-two-screen';
 import ExampleThreeScreen from '../screens/example-screen/example-three-screen';
 import ExampleFourScreen from '../screens/example-screen/example-four-screen';
+import ExampleFiveScreen from '../screens/example-screen/example-five-screen';
 
 export default StackNavigator({
   Main: {
@@ -21,6 +22,9 @@ export default StackNavigator({
   },
   ExampleFour: {
     screen: ExampleFourScreen
+  },
+  ExampleFive: {
+    screen: ExampleFiveScreen
   },
   initialRouteName: {
     screen: MainScreen

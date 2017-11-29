@@ -5,29 +5,46 @@ import randomColor from 'randomcolor';
 
 import styles from './styles';
 
-const AnimatedView = Animated.createAnimatedComponent(View)
+const AnimatedView = Animated.createAnimatedComponent(View);
+const AnimatedText = Animated.createAnimatedComponent(Text);
 
 type Props = {
   number: number,
   animatedStyles?: Object,
+  animatedTextStyles?: Object,
 }
 
 class Card extends PureComponent<Props> {
   render() {
-    const { animatedStyles, number } = this.props;
+    const {
+      animatedStyles,
+      animatedTextStyles,
+      number
+    } = this.props;
     const cardStyles = [
       styles.container,
       { backgroundColor: randomColor() },
       animatedStyles
     ];
 
+    const textStyles = [
+      styles.text,
+      animatedTextStyles
+    ];
+
     const Wrapper = animatedStyles
       ? AnimatedView
       : View;
 
+    const TextWrapper = animatedTextStyles
+      ? AnimatedText
+      : Text;
+
     return (
       <Wrapper style={cardStyles}>
-        <Text style={styles.text}>CARD {number}</Text>
+        <TextWrapper style={textStyles}>
+          CARD {number}
+        </TextWrapper>
       </Wrapper>
     )
   }
