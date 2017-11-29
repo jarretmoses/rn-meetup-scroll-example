@@ -8,5 +8,8 @@ export default StyleSheet.create({
     width,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  text: {
+    fontSize: 30
   }
 })

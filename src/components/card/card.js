@@ -27,7 +27,7 @@ export default class Card extends PureComponent<Props> {
 
     return (
       <Wrapper style={cardStyles}>
-        <Text>CARD {number}</Text>
+        <Text style={styles.text}>CARD {number}</Text>
       </Wrapper>
     )
   }

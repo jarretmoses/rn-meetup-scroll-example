@@ -24,6 +24,22 @@ const getScale = (animatedScroll, i) => {
   });
 };
 
+const getRotate = (animatedScroll, i) => {
+  const inputRange = [
+    (i - 1) * width,
+    i * width,
+    (i + 1) * width,
+  ];
+
+  const outputRange = ['-90deg', '0deg', '90deg'];
+
+  return animatedScroll.interpolate({
+    inputRange,
+    outputRange,
+    extrapolate: 'clamp',
+  });
+};
+
 class ExampleThreeScreen extends PureComponent<{}> {
   _animatedValue: Object
 
@@ -31,8 +47,13 @@ class ExampleThreeScreen extends PureComponent<{}> {
 
   _renderCards = () => (
     data.map((number, i) => {
+      const rotate = getRotate(this._animatedValue, i);
       const animatedStyles = {
-        transform: [{scale: getScale(this._animatedValue, i)}]
+        transform: [
+          {scale: getScale(this._animatedValue, i)},
+          {rotateX: rotate},
+          {rotateY: rotate}
+        ]
       }
 
       return (
