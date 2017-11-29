@@ -15,7 +15,7 @@ const getScale = (animatedScroll, i) => {
     (i + 1) * width,
   ];
 
-  const outputRange = [0.9, 1, 0.9];
+  const outputRange = [0.8, 1, 0.8];
 
   return animatedScroll.interpolate({
     inputRange,
