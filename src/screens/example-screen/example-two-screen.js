@@ -6,6 +6,10 @@ import data from '../../constants/data';
 import styles from './styles';
 
 class ExampleTwoScreen extends PureComponent {
+  static navigationOptions = () => ({
+    headerTitle: 'Example 2',
+  })
+
   _renderCards = () => (
     data.map((number) => <Card number={number} key={number} />)
   )

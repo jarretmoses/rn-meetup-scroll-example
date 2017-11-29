@@ -27,6 +27,10 @@ const getParallax = (animatedScroll, i) => {
 class ExampleFiveScreen extends PureComponent<{}> {
   _animatedValue: Object
 
+  static navigationOptions = () => ({
+    headerTitle: 'Example 5',
+  })
+
   _animatedValue = new Animated.Value(0);
 
   _renderCards = () => (

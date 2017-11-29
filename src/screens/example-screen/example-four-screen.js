@@ -43,6 +43,10 @@ const getRotate = (animatedScroll, i) => {
 class ExampleFourScreen extends PureComponent<{}> {
   _animatedValue: Object
 
+  static navigationOptions = () => ({
+    headerTitle: 'Example 4',
+  })
+
   _animatedValue = new Animated.Value(0);
 
   _renderCards = () => (
