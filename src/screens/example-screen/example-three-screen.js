@@ -1,20 +1,48 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { Animated, ScrollView } from 'react-native';
+import { Dimensions, Animated, ScrollView } from 'react-native';
 
 import Card from '../../components/card/card';
 import data from '../../constants/data';
 import styles from './styles';
 
+const { width } = Dimensions.get('window');
+
+const getScale = (animatedScroll, i) => {
+  const inputRange = [
+    (i - 1) * width,
+    i * width,
+    (i + 1) * width,
+  ];
+
+  const outputRange = [0.9, 1, 0.9];
+
+  return animatedScroll.interpolate({
+    inputRange,
+    outputRange,
+    extrapolate: 'clamp',
+  });
+};
+
 class ExampleThreeScreen extends PureComponent<{}> {
   _animatedValue: Object
 
-  componentWillMount() {
-    this._animatedValue = new Animated.Value(0);
-  }
+  _animatedValue = new Animated.Value(0);
 
   _renderCards = () => (
-    data.map((number) => <Card number={number} key={number} />)
+    data.map((number, i) => {
+      const animatedStyles = {
+        transform: [{scale: getScale(this._animatedValue, i)}]
+      }
+
+      return (
+        <Card
+          number={number}
+          key={number}
+          animatedStyles={animatedStyles}
+        />
+      )
+    })
   )
 
   render() {
@@ -24,6 +52,10 @@ class ExampleThreeScreen extends PureComponent<{}> {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={Animated.event([
+          { nativeEvent: { contentOffset: { x: this._animatedValue } } },
+        ])}
       >
         {this._renderCards()}
       </ScrollView>
